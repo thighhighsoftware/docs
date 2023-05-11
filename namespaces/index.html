@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Namespaces - th.software</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">th.software</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Getting Started</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Namespaces</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../classes/" class="nav-link">Basic Classes & Enums</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../gclasses/" class="nav-link">Game Classes</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../examples/" class="nav-link">Example Scripts</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a rel="prev" href=".." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../classes/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#namespace-console" class="nav-link">namespace console</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#func-print" class="nav-link">func print</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#namespace-renderer" class="nav-link">namespace renderer</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#func-line" class="nav-link">func line</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-rect" class="nav-link">func rect</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-filled_rect" class="nav-link">func filled_rect</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-triangle" class="nav-link">func triangle</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-filled_triangle" class="nav-link">func filled_triangle</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-circle" class="nav-link">func circle</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-filled_circle" class="nav-link">func filled_circle</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-string" class="nav-link">func string</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-string_ex" class="nav-link">func string_ex</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-text_extent" class="nav-link">func text_extent</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#enum-font" class="nav-link">enum font</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#namespace-colors" class="nav-link">namespace colors</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#func-color" class="nav-link">func *color*</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-from_hsb" class="nav-link">func from_hsb</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#namespace-memory" class="nav-link">namespace memory</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#func-module" class="nav-link">func module</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-read" class="nav-link">func read*</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-write" class="nav-link">func write*</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-readstr" class="nav-link">func readstr</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#namespace-mono" class="nav-link">namespace mono</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#func-init_functions" class="nav-link">func init_functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-get_static_field_data" class="nav-link">func get_static_field_data</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-get_class_name" class="nav-link">func get_class_name</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-find_method" class="nav-link">func find_method</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#namespace-unity" class="nav-link">namespace unity</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#func-find_component" class="nav-link">func find_component</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-find_camera" class="nav-link">func find_camera</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-find_active_object" class="nav-link">func find_active_object</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-find_tagged_object" class="nav-link">func find_tagged_object</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-get_position" class="nav-link">func get_position</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-get_rotation" class="nav-link">func get_rotation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#namespace-game" class="nav-link">namespace game</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#bool-in_raid" class="nav-link">bool in_raid</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-player_count" class="nav-link">func player_count</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-item_count" class="nav-link">func item_count</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-exfil_count" class="nav-link">func exfil_count</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-player_at" class="nav-link">func player_at</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-item_at" class="nav-link">func item_at</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-exfil_at" class="nav-link">func exfil_at</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-get_market_info" class="nav-link">func get_market_info</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#namespace-screen" class="nav-link">namespace screen</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#int-width" class="nav-link">int width</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#int-height" class="nav-link">int height</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-w2s" class="nav-link">func w2s</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#namespace-input" class="nav-link">namespace input</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#prop-mouse_button" class="nav-link">prop mouse_button</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#prop-key" class="nav-link">prop key</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#int-mouse_x" class="nav-link">int mouse_x</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#int-mouse_y" class="nav-link">int mouse_y</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#int-scroll_delta_x" class="nav-link">int scroll_delta_x</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#int-scroll_delta_y" class="nav-link">int scroll_delta_y</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#prop-set_key" class="nav-link">prop set_key</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#namespace-config" class="nav-link">namespace config</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#func-load" class="nav-link">func load</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-save" class="nav-link">func save</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-get_" class="nav-link">func get_*</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-set_" class="nav-link">func set_*</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#namespace-gui" class="nav-link">namespace gui</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#remarks" class="nav-link">Remarks</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-add_checkbox" class="nav-link">func add_checkbox</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-add_slider_" class="nav-link">func add_slider_*</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-add_color_picker" class="nav-link">func add_color_picker</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-add_subtab" class="nav-link">func add_subtab</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-destroy_control" class="nav-link">func destroy_control</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#func-destroy_subtab" class="nav-link">func destroy_subtab</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<div><h1 id="namespace-console"><code>namespace console</code></h1>
+<h2 id="func-print"><code>func print</code></h2>
+<pre><code class="language-cpp">void print(string text)
+</code></pre>
+<p>Prints the specified <code>text</code> into the software's in-game console.</p>
+<h1 id="namespace-renderer"><code>namespace renderer</code></h1>
+<h2 id="func-line"><code>func line</code></h2>
+<pre><code class="language-cpp">void renderer::line(int x0, int y0, int x1, int y0, col_t color, float thickness)
+</code></pre>
+<p>Draws a line from point <code>(x0, y0)</code> to point <code>(x1, y1)</code> with the specified <code>color</code> and <code>thickness</code>.</p>
+<h2 id="func-rect"><code>func rect</code></h2>
+<pre><code class="language-cpp">void renderer::rect(int x, int y, int w, int h, col_t color)
+</code></pre>
+<p>Draws a rectangle with the specified position <code>(x, y)</code>, size <code>w x h</code>, and <code>color</code>.</p>
+<h2 id="func-filled_rect"><code>func filled_rect</code></h2>
+<pre><code class="language-cpp">void renderer::filled_rect(int x, int y, int w, int h, col_t color)
+</code></pre>
+<p>Draws a filled rectangle with the specified position <code>(x, y)</code>, size <code>w x h</code>, and <code>color</code>.</p>
+<h2 id="func-triangle"><code>func triangle</code></h2>
+<pre><code class="language-cpp">void renderer::triangle(int x0, int y0, int x1, int y1, int x2, int y2, col_t color)
+</code></pre>
+<p>Draws a triangle with the specified points <code>(x0, y0)</code>, <code>(x1, y1)</code>, and <code>(x2, y2)</code> and <code>color</code>.</p>
+<h2 id="func-filled_triangle"><code>func filled_triangle</code></h2>
+<pre><code class="language-cpp">void renderer::filled_triangle(int x0, int y0, int x1, int y1, int x2, int y2, col_t color)
+</code></pre>
+<p>Draws a filled triangle with the specified points <code>(x0, y0)</code>, <code>(x1, y1)</code>, and <code>(x2, y2)</code> and <code>color</code>.</p>
+<h2 id="func-circle"><code>func circle</code></h2>
+<pre><code class="language-cpp">void renderer::circle(int x, int y, int radius, col_t color)
+</code></pre>
+<p>Draws a circle with the specified position <code>(x, y)</code>, <code>radius</code>, and <code>color</code>.</p>
+<h2 id="func-filled_circle"><code>func filled_circle</code></h2>
+<pre><code class="language-cpp">void renderer::filled_circle(int x, int y, int radius, col_t color)
+</code></pre>
+<p>Draws a filled circle with the specified position <code>(x, y)</code>, <code>radius</code>, and <code>color</code>.</p>
+<h2 id="func-string"><code>func string</code></h2>
+<pre><code class="language-cpp">void renderer::string(int font, int x, int y, string text, col_t color)
+</code></pre>
+<p>Draws a string of <code>text</code> with the specified font type <code>font</code>, position <code>(x, y)</code>, and <code>color</code>.</p>
+<h2 id="func-string_ex"><code>func string_ex</code></h2>
+<pre><code class="language-cpp">void renderer::string_ex(int font, int x, int y, string text, col_t color, bool centered, bool shadow)
+</code></pre>
+<p>Draws a string of <code>text</code> with the specified font type <code>font</code>, position <code>(x, y)</code>, and <code>color</code>. If <code>centered</code> is set to true, the text will be centered horizontally. If <code>shadow</code> is set to true, the text will have a shadow effect.</p>
+<h2 id="func-text_extent"><code>func text_extent</code></h2>
+<pre><code class="language-cpp">extent renderer::text_extent(int font, string text)
+</code></pre>
+<p>Returns the bounds of a string of <code>text</code> with the specified font type <code>font</code>.</p>
+<h2 id="enum-font"><code>enum font</code></h2>
+<pre><code class="language-cpp">enum font
+{
+    segoeui,
+    sf,
+    sf_semi,
+    sf_big,
+    tahoma,
+    tahoma_big
+}
+</code></pre>
+<p>An enumeration containing the different font types that can be used with the <code>string()</code> and <code>string_ex()</code> functions.</p>
+<h1 id="namespace-colors"><code>namespace colors</code></h1>
+<h2 id="func-color"><code>func *color*</code></h2>
+<pre><code class="language-cpp">col_t colors::black() // (0, 0, 0, 255)
+col_t colors::white() // (255, 255, 255, 255)
+col_t colors::navy() // (0, 0, 128, 255)
+col_t colors::blue() // (0, 0, 255, 255)
+col_t colors::green() // (0, 128, 0, 255)
+col_t colors::teal() // (0, 128, 128, 255)
+col_t colors::lime() // (0, 255, 0, 255)
+col_t colors::aqua() // (0, 255, 255, 255)
+col_t colors::maroon() // (128, 0, 0, 255)
+col_t colors::purple() // (128, 0, 128, 255)
+col_t colors::olive() // (128, 128, 0, 255)
+col_t colors::gray() // (128, 128, 128, 255)
+col_t colors::silver() // (192, 192, 192, 255)
+col_t colors::red() // (255, 0, 0, 255)
+col_t colors::fuchsia() // (255, 0, 255, 255)
+col_t colors::yellow() // (255, 255, 0, 255)
+</code></pre>
+<p>Returns a <code>col_t</code> object representing <code>*color*</code>.</p>
+<h2 id="func-from_hsb"><code>func from_hsb</code></h2>
+<pre><code class="language-cpp">col_t colors::from_hsb(float hue, float saturation, float brightness)
+</code></pre>
+<p>Returns a <code>col_t</code> object with the specified <code>hue</code>, <code>saturation</code>, and <code>brightness</code> values in the HSB color space. The <code>hue</code>, <code>saturation</code> and <code>brightness</code> values should be in the range <code>[0, 1]</code>.</p>
+<h1 id="namespace-memory"><code>namespace memory</code></h1>
+<h2 id="func-module"><code>func module</code></h2>
+<pre><code class="language-cpp">uint64 memory::module(string module_name)
+</code></pre>
+<p>Returns the base address of the specified <code>module_name</code> module.</p>
+<h2 id="func-read"><code>func read*</code></h2>
+<pre><code class="language-cpp">uint8 memory::read8(uint64 address)
+uint16 memory::read16(uint64 address)
+uint32 memory::read32(uint64 address)
+uint64 memory::read64(uint64 address)
+</code></pre>
+<p>Reads an n-bit unsigned integer from the specified <code>address</code> in memory.</p>
+<h2 id="func-write"><code>func write*</code></h2>
+<pre><code class="language-cpp">void memory::write8(uint64 address, uint8 value)
+void memory::write16(uint64 address, uint16 value)
+void memory::write32(uint64 address, uint32 value)
+void memory::write64(uint64 address, uint64 value)
+</code></pre>
+<p>Writes a n-bit unsigned integer <code>value</code> to the specified <code>address</code> in memory.</p>
+<h2 id="func-readstr"><code>func readstr</code></h2>
+<pre><code class="language-cpp">string memory::readstr(uint64 ptr)
+</code></pre>
+<p>Reads a managed System::String from the specified <code>address</code> in memory.</p>
+<h1 id="namespace-mono"><code>namespace mono</code></h1>
+<h2 id="func-init_functions"><code>func init_functions</code></h2>
+<pre><code class="language-cpp">void mono::init_functions()
+</code></pre>
+<p>Reads the table of JIT-compiled functions. <code>init_functions()</code> is called automatically on software launch and should only be called again if <code>find_method</code> returns <code>0</code>, but shouldn't.</p>
+<h2 id="func-get_static_field_data"><code>func get_static_field_data</code></h2>
+<pre><code class="language-cpp">uint64 mono::get_static_field_data(string assembly, string class)
+</code></pre>
+<p>Returns the address of the static field data for the specified <code>class</code> in the specified <code>assembly</code>.</p>
+<h2 id="func-get_class_name"><code>func get_class_name</code></h2>
+<pre><code class="language-cpp">string mono::get_class_name(uint64 instance_ptr)
+</code></pre>
+<p>Returns the name of the class for the specified <code>instance_ptr</code>.</p>
+<h2 id="func-find_method"><code>func find_method</code></h2>
+<pre><code class="language-cpp">uint64 mono::find_method(string assembly, string klass, string method)
+</code></pre>
+<p>Finds the address of the specified <code>method</code> in the specified <code>klass</code> and <code>assembly</code> and returns its pointer if found in pre-cached JIT table, otherwise returns <code>0</code>.</p>
+<h1 id="namespace-unity"><code>namespace unity</code></h1>
+<h2 id="func-find_component"><code>func find_component</code></h2>
+<pre><code class="language-cpp">uint64 unity::find_component(uint64 game_object, string component_name)
+</code></pre>
+<p>Finds the component <code>component_name</code> of the <code>game_object</code> and returns its pointer if found, otherwise returns <code>0</code>.</p>
+<h2 id="func-find_camera"><code>func find_camera</code></h2>
+<pre><code class="language-cpp">uint64 unity::find_camera(string camera_name)
+</code></pre>
+<p>Finds the camera with the name <code>camera_name</code> and returns its pointer if found, otherwise returns <code>0</code>.</p>
+<h2 id="func-find_active_object"><code>func find_active_object</code></h2>
+<pre><code class="language-cpp">uint64 unity::find_active_object(string object_name)
+</code></pre>
+<p>Finds the active object with the name <code>object_name</code> and returns its pointer if found, otherwise returns <code>0</code>.</p>
+<h2 id="func-find_tagged_object"><code>func find_tagged_object</code></h2>
+<pre><code class="language-cpp">uint64 unity::find_tagged_object(string object_name)
+</code></pre>
+<p>Finds the tagged object with the name <code>object_name</code> and returns its pointer if found, otherwise returns <code>0</code>.</p>
+<h2 id="func-get_position"><code>func get_position</code></h2>
+<pre><code class="language-cpp">bool unity::get_position(uint64 transform, vector3 &amp;out position)
+</code></pre>
+<p>Performs a GetPosition operation and stores the result in <code>position</code>. Returns true on success.</p>
+<h2 id="func-get_rotation"><code>func get_rotation</code></h2>
+<pre><code class="language-cpp">bool unity::get_rotation(uint64 transform, quaternion &amp;out rotation)
+</code></pre>
+<p>Performs a GetRotation operation and stores the result in <code>rotation</code>. Returns true on success.</p>
+<h1 id="namespace-game"><code>namespace game</code></h1>
+<h2 id="bool-in_raid"><code>bool in_raid</code></h2>
+<pre><code class="language-cpp">bool game::in_raid
+</code></pre>
+<p>Holds a boolean value indicating whether the player is currently in a raid.</p>
+<h2 id="func-player_count"><code>func player_count</code></h2>
+<pre><code class="language-cpp">int64 game::player_count()
+</code></pre>
+<p>Returns the number of players in the current game session.</p>
+<h2 id="func-item_count"><code>func item_count</code></h2>
+<pre><code class="language-cpp">int64 game::item_count()
+</code></pre>
+<p>Returns the number of items in the current game session.</p>
+<h2 id="func-exfil_count"><code>func exfil_count</code></h2>
+<pre><code class="language-cpp">int64 game::exfil_count()
+</code></pre>
+<p>Returns the number of available exfiltration points in the current game session.</p>
+<h2 id="func-player_at"><code>func player_at</code></h2>
+<pre><code class="language-cpp">player&amp; game::player_at(int index)
+</code></pre>
+<p>Returns a reference to the <code>player</code> at the specified <code>index</code>.</p>
+<h2 id="func-item_at"><code>func item_at</code></h2>
+<pre><code class="language-cpp">item&amp; game::item_at(int index)
+</code></pre>
+<p>Returns a reference to the <code>item</code> at the specified <code>index</code>.</p>
+<h2 id="func-exfil_at"><code>func exfil_at</code></h2>
+<pre><code class="language-cpp">exfil_point&amp; game::exfil_at(int index)
+</code></pre>
+<p>Returns a reference to the exfiltration point <code>exfil_point</code> at the specified <code>index</code>.</p>
+<h2 id="func-get_market_info"><code>func get_market_info</code></h2>
+<pre><code class="language-cpp">market_item&amp; game::get_market_info(string id)
+</code></pre>
+<p>Returns market info for the item with the specified id.</p>
+<h1 id="namespace-screen"><code>namespace screen</code></h1>
+<h2 id="int-width"><code>int width</code></h2>
+<pre><code class="language-cpp">int screen::width
+</code></pre>
+<p>Holds the width of the screen.</p>
+<h2 id="int-height"><code>int height</code></h2>
+<pre><code class="language-cpp">int screen::height
+</code></pre>
+<p>Holds the height of the screen.</p>
+<h2 id="func-w2s"><code>func w2s</code></h2>
+<pre><code class="language-cpp">bool screen::w2s(vector3&amp; in, vector3&amp; out)
+</code></pre>
+<p>Converts the 3D world coordinates in <code>in</code> to 2D screen coordinates in <code>out</code>. Returns <code>true</code> if the 2D coordinates are within the screen boundaries, <code>false</code> otherwise.</p>
+<h1 id="namespace-input"><code>namespace input</code></h1>
+<h2 id="prop-mouse_button"><code>prop mouse_button</code></h2>
+<pre><code class="language-cpp">bool input::mouse_button[int keycode]
+</code></pre>
+<p>Returns the state of the specified mouse button <code>keycode</code>.</p>
+<h2 id="prop-key"><code>prop key</code></h2>
+<pre><code class="language-cpp">bool input::key[int keycode]
+</code></pre>
+<p>Returns the state of the specified keyboard key <code>keycode</code>.</p>
+<h2 id="int-mouse_x"><code>int mouse_x</code></h2>
+<pre><code class="language-cpp">int input::mouse_x
+</code></pre>
+<p>Holds the current x-coordinate of the mouse cursor.</p>
+<h2 id="int-mouse_y"><code>int mouse_y</code></h2>
+<pre><code class="language-cpp">int input::mouse_y
+</code></pre>
+<p>Holds the current y-coordinate of the mouse cursor. Please note that the value is in a coordinate system where 0 is at the bottom of the screen.</p>
+<h2 id="int-scroll_delta_x"><code>int scroll_delta_x</code></h2>
+<pre><code class="language-cpp">int input::scroll_delta_x
+</code></pre>
+<p>Holds the horizontal scroll delta.</p>
+<h2 id="int-scroll_delta_y"><code>int scroll_delta_y</code></h2>
+<pre><code class="language-cpp">int input::scroll_delta_y
+</code></pre>
+<p>Holds the vertical scroll delta.</p>
+<h2 id="prop-set_key"><code>prop set_key</code></h2>
+<pre><code class="language-cpp">bool input::set_key[int keycode] = state
+</code></pre>
+<p>Sets the <code>state</code> of the specified keyboard or mouse key <code>keycode</code>.</p>
+<h1 id="namespace-config"><code>namespace config</code></h1>
+<h2 id="func-load"><code>func load</code></h2>
+<pre><code class="language-cpp">void config::load()
+</code></pre>
+<p>Loads configuration file to memory.</p>
+<h2 id="func-save"><code>func save</code></h2>
+<pre><code class="language-cpp">void config::save()
+</code></pre>
+<p>Saves configuration file to disk.</p>
+<h2 id="func-get_"><code>func get_*</code></h2>
+<pre><code class="language-cpp">int config::get_int(string name, int def)
+float config::get_float(string name, float def)
+bool config::get_bool(string name, bool def)
+</code></pre>
+<p>Finds and returns value of <code>name</code> setting in config if found, otherwise returns <code>def</code>.</p>
+<h2 id="func-set_"><code>func set_*</code></h2>
+<pre><code class="language-cpp">void config::set_int(string name, int value)
+void config::set_float(string name, float value)
+void config::set_bool(string name, bool value)
+</code></pre>
+<p>Sets value of <code>name</code> setting in config.</p>
+<h1 id="namespace-gui"><code>namespace gui</code></h1>
+<h2 id="remarks">Remarks</h2>
+<ul>
+<li>Please refer to the example scripts for a better understanding of how to handle GUI bindings.  </li>
+<li>All <code>add_*</code> functions, with the exception of <code>add_subtab</code>, return a handle to the control. You <strong><em>MUST</em></strong> properly dispose of the created controls by calling <code>destroy_control</code> on <strong><em>ALL</em></strong> of the handles; this can be handled in the <code>on_unload</code> callback.  </li>
+<li>Control creation functions expect a global variable declaration as the last argument. Variable must already be declared in code; it will not be created by the binding.</li>
+</ul>
+<h2 id="func-add_checkbox"><code>func add_checkbox</code></h2>
+<pre><code class="language-cpp">uint64 gui::add_checkbox(string tab, string subtab, string text, string bool_decl)
+</code></pre>
+<p>Creates a checkbox control and returns a handle to it. Example <code>bool_decl</code>: <code>bool checkbox_var</code>.</p>
+<h2 id="func-add_slider_"><code>func add_slider_*</code></h2>
+<pre><code class="language-cpp">uint64 gui::add_slider_int(string tab, string subtab, string text, int min, int max, string int_decl)
+uint64 gui::add_slider_float(string tab, string subtab, string text, float min, float max, string float_decl)
+</code></pre>
+<p>Creates a slider control and returns a handle to it. Example <code>int_decl</code>: <code>int slider_var</code>, <code>float_decl</code>: <code>float slider_var</code>.</p>
+<h2 id="func-add_color_picker"><code>func add_color_picker</code></h2>
+<pre><code class="language-cpp">uint64 gui::add_color_picker(string tab, string subtab, string text, string picker_container_decl)
+</code></pre>
+<p>Creates a color picker control and returns a handle to it. Example <code>picker_container_decl</code>: <code>picker_container_t picker_var</code>.</p>
+<h2 id="func-add_subtab"><code>func add_subtab</code></h2>
+<pre><code class="language-cpp">void gui::add_subtab(string tab, string subtab, string icon_name)
+</code></pre>
+<p>Adds a subtab. <code>icon_name</code> expects a <a href="https://fontawesome.com/search">Font Awesome</a> icon name, defaults to <strong>"question"</strong> if name isn't valid. </p>
+<h2 id="func-destroy_control"><code>func destroy_control</code></h2>
+<pre><code class="language-cpp">void gui::destroy_control(uint64 handle)
+</code></pre>
+<p>Destroys a control with the specified <code>handle</code>. This function is normally only to be called in <code>on_unload</code>.</p>
+<h2 id="func-destroy_subtab"><code>func destroy_subtab</code></h2>
+<pre><code class="language-cpp">void gui::destroy_subtab(string tab, string subtab)
+</code></pre>
+<p>Destroys a subtab with the specified name. This function is normally only to be called in <code>on_unload</code>.</p></div></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

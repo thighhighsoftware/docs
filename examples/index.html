@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Example Scripts - th.software</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">th.software</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Getting Started</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../namespaces/" class="nav-link">Namespaces</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../classes/" class="nav-link">Basic Classes & Enums</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../gclasses/" class="nav-link">Game Classes</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Example Scripts</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a rel="prev" href="../gclasses/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#gui-bindings-example" class="nav-link">GUI bindings example</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#esp-script-example-and-general-showcase-of-features" class="nav-link">ESP script example (and general showcase of features)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<div><h1 id="gui-bindings-example">GUI bindings example</h1>
+<pre><code class="language-cpp">bool checkbox_var = false;
+int int_slider_var = 1;
+float float_slider_var = 50.f;
+picker_container_t picker_var = picker_container_t(255, 0, 0);
+vector&lt;uint64&gt; item_handles;
+
+void on_gui()
+{
+
+}
+
+void on_unload()
+{
+    for (int i = 0; i &lt; item_handles.size(); i++)
+        gui::destroy_control(item_handles[i]);
+
+    gui::destroy_subtab("aim", "test");
+
+    config::set_bool("fuckertest", checkbox_var);
+}
+
+void main()
+{
+    checkbox_var = config::get_bool("fuckertest", false);
+
+    gui::add_subtab("aim", "test", "code");
+    item_handles.push_back(gui::add_checkbox("aim", "test", "fucker", "bool checkbox_var"));
+    item_handles.push_back(gui::add_slider_int("aim", "test", "fucker", -100, 100, "int int_slider_var"));
+    item_handles.push_back(gui::add_slider_float("aim", "test", "fucker", -100.f, 100.f, "float float_slider_var"));
+    item_handles.push_back(gui::add_color_picker("aim", "test", "fucker", "picker_container_t picker_var"));
+}
+</code></pre>
+<h1 id="esp-script-example-and-general-showcase-of-features">ESP script example (and general showcase of features)</h1>
+<pre><code class="language-cpp">int global_variable = 0;
+
+void render_3d_line(vector3 a, vector3 b, col_t color, float thickness = 1.f)
+{
+    vector3 a_screen, b_screen;
+    if (!screen::w2s(a, a_screen) || !screen::w2s(b, b_screen))
+        return;
+
+    renderer::line(a_screen.x, a_screen.y, b_screen.x, b_screen.y, color, thickness);
+}
+
+void render_3d_box(vector3 origin, vector3 center, vector3 extents, quaternion rotation, col_t color)
+{
+    // pasted from some random unity forum :shrug:
+    auto v3FrontTopLeft = vector3(center.x - extents.x, center.y + extents.y, center.z - extents.z);  // Front top left corner
+    auto v3FrontTopRight = vector3(center.x + extents.x, center.y + extents.y, center.z - extents.z);  // Front top right corner
+    auto v3FrontBottomLeft = vector3(center.x - extents.x, center.y - extents.y, center.z - extents.z);  // Front bottom left corner
+    auto v3FrontBottomRight = vector3(center.x + extents.x, center.y - extents.y, center.z - extents.z);  // Front bottom right corner
+    auto v3BackTopLeft = vector3(center.x - extents.x, center.y + extents.y, center.z + extents.z);  // Back top left corner
+    auto v3BackTopRight = vector3(center.x + extents.x, center.y + extents.y, center.z + extents.z);  // Back top right corner
+    auto v3BackBottomLeft = vector3(center.x - extents.x, center.y - extents.y, center.z + extents.z);  // Back bottom left corner
+    auto v3BackBottomRight = vector3(center.x + extents.x, center.y - extents.y, center.z + extents.z);  // Back bottom right corner
+
+    v3FrontTopLeft = origin + rotation.multiply(v3FrontTopLeft);
+    v3FrontTopRight = origin + rotation.multiply(v3FrontTopRight);
+    v3FrontBottomLeft = origin + rotation.multiply(v3FrontBottomLeft);
+    v3FrontBottomRight = origin + rotation.multiply(v3FrontBottomRight);
+    v3BackTopLeft = origin + rotation.multiply(v3BackTopLeft);
+    v3BackTopRight = origin + rotation.multiply(v3BackTopRight);
+    v3BackBottomLeft = origin + rotation.multiply(v3BackBottomLeft);
+    v3BackBottomRight = origin + rotation.multiply(v3BackBottomRight);
+
+    render_3d_line(v3FrontTopLeft, v3FrontTopRight, color);
+    render_3d_line(v3FrontTopRight, v3FrontBottomRight, color);
+    render_3d_line(v3FrontBottomRight, v3FrontBottomLeft, color);
+    render_3d_line(v3FrontBottomLeft, v3FrontTopLeft, color);
+
+    render_3d_line(v3BackTopLeft, v3BackTopRight, color);
+    render_3d_line(v3BackTopRight, v3BackBottomRight, color);
+    render_3d_line(v3BackBottomRight, v3BackBottomLeft, color);
+    render_3d_line(v3BackBottomLeft, v3BackTopLeft, color);
+
+    render_3d_line(v3FrontTopLeft, v3BackTopLeft, color);
+    render_3d_line(v3FrontTopRight, v3BackTopRight, color);
+    render_3d_line(v3FrontBottomRight, v3BackBottomRight, color);
+    render_3d_line(v3FrontBottomLeft, v3BackBottomLeft, color);
+}
+
+void render_player_esp()
+{
+    for (int i = 0; i &lt; game::player_count(); i++)
+    {
+        auto pl = game::player_at(i);
+        if (pl.local)
+            continue;
+
+        auto bbox = pl.bbox;
+        if (!bbox.valid)
+            continue;
+
+        // box
+        renderer::rect(bbox.x - 1, bbox.y - 1, bbox.w + 2, bbox.h + 2, colors::black());
+        renderer::rect(bbox.x, bbox.y, bbox.w, bbox.h, colors::red());
+        renderer::rect(bbox.x + 1, bbox.y + 1, bbox.w - 2, bbox.h - 2, colors::black());
+
+        // name
+        auto name = pl.scav ? "scav" : pl.name;
+        renderer::string_ex(renderer::font::tahoma, bbox.x + bbox.w/2, bbox.y - 12, name, colors::red(), true, true);
+
+        // health (440/440)
+        renderer::string_ex(renderer::font::tahoma, bbox.x + bbox.w/2, bbox.y + bbox.h + 2,
+                            formatInt(pl.health)+"/"+formatInt(pl.health_max), colors::red(), true, true);
+
+        // colliders
+        for (int j = 0; j &lt; body_part_collider_type::RightCalf + 1; j++)
+        {
+            auto col = pl.collider[j];
+
+            if (col.type == collider_type::box)
+            {
+                auto center = col.center;
+                auto extents = col.size * 0.5f;
+
+                render_3d_box(col.origin, center, extents, col.rotation, colors::green());
+            }
+            else if (col.type == collider_type::sphere)
+            {
+                auto extents = vector3();
+                extents.x = extents.y = extents.z = col.radius;
+                render_3d_box(col.origin, col.center, extents, col.rotation, colors::green());
+            }
+            else if (col.type == collider_type::capsule)
+            {
+                auto center = col.center;
+                auto extents = vector3();
+                extents.x = extents.y = extents.z = col.radius;
+                if (col.direction == 0)
+                    extents.x = col.height / 2;
+                if (col.direction == 1)
+                    extents.y = col.height / 2;
+                if (col.direction == 2)
+                    extents.z = col.height / 2;
+                render_3d_box(col.origin, center, extents, col.rotation, colors::green());
+            }
+        }
+
+        // skeleton
+        vector&lt;vector3&gt; w2s_bones;
+        auto all_g = true;
+        for (int j = 0; j &lt; player_bone::bone_amt; j++)
+        {
+            auto bone = pl.bone[j];
+            auto bone_screen = vector3();
+            if (!screen::w2s(bone, bone_screen))
+            {
+                all_g = false;
+                break;
+            }
+
+            w2s_bones.push_back(bone_screen);
+        }
+
+        if (!all_g)
+            continue;
+
+        auto skelly_color = colors::red();
+
+        renderer::line(w2s_bones[player_bone::head].x, w2s_bones[player_bone::head].y, w2s_bones[player_bone::neck].x, w2s_bones[player_bone::neck].y, skelly_color, 1.f);
+        renderer::line(w2s_bones[player_bone::neck].x, w2s_bones[player_bone::neck].y, w2s_bones[player_bone::spine].x, w2s_bones[player_bone::spine].y, skelly_color, 1.f);
+        renderer::line(w2s_bones[player_bone::spine].x, w2s_bones[player_bone::spine].y, w2s_bones[player_bone::pelvis].x, w2s_bones[player_bone::pelvis].y, skelly_color, 1.f);
+
+        renderer::line(w2s_bones[player_bone::pelvis].x, w2s_bones[player_bone::pelvis].y, w2s_bones[player_bone::calf_l].x, w2s_bones[player_bone::calf_l].y, skelly_color, 1.f);
+        renderer::line(w2s_bones[player_bone::pelvis].x, w2s_bones[player_bone::pelvis].y, w2s_bones[player_bone::calf_r].x, w2s_bones[player_bone::calf_r].y, skelly_color, 1.f);
+
+        renderer::line(w2s_bones[player_bone::calf_l].x, w2s_bones[player_bone::calf_l].y, w2s_bones[player_bone::foot_l].x, w2s_bones[player_bone::foot_l].y, skelly_color, 1.f);
+        renderer::line(w2s_bones[player_bone::calf_r].x, w2s_bones[player_bone::calf_r].y, w2s_bones[player_bone::foot_r].x, w2s_bones[player_bone::foot_r].y, skelly_color, 1.f);
+
+        renderer::line(w2s_bones[player_bone::neck].x, w2s_bones[player_bone::neck].y, w2s_bones[player_bone::upperarm_l].x, w2s_bones[player_bone::upperarm_l].y, skelly_color, 1.f);
+        renderer::line(w2s_bones[player_bone::neck].x, w2s_bones[player_bone::neck].y, w2s_bones[player_bone::upperarm_r].x, w2s_bones[player_bone::upperarm_r].y, skelly_color, 1.f);
+
+        renderer::line(w2s_bones[player_bone::upperarm_l].x, w2s_bones[player_bone::upperarm_l].y, w2s_bones[player_bone::forearm_l].x, w2s_bones[player_bone::forearm_l].y, skelly_color, 1.f);
+        renderer::line(w2s_bones[player_bone::upperarm_r].x, w2s_bones[player_bone::upperarm_r].y, w2s_bones[player_bone::forearm_r].x, w2s_bones[player_bone::forearm_r].y, skelly_color, 1.f);
+    }
+}
+
+void render_item_esp()
+{
+    int items_rendered = 0;
+
+    for (int i = 0; i &lt; game::item_count(); i++)
+    {
+        auto it = game::item_at(i);
+        if (it.container || it.corpse)
+            continue;
+
+        auto props = it.market_info;
+        if (props.avg_price == 0)
+            continue;
+
+        auto screen_vec = vector3();
+        if (!screen::w2s(it.origin, screen_vec))
+            continue;
+
+        renderer::string_ex(renderer::font::tahoma, screen_vec.x, screen_vec.y, props.get_name(0), colors::white(), true, true);
+
+        items_rendered++;
+    }
+
+    renderer::string_ex(renderer::font::segoeui, 0, 0, "items_rendered: " + items_rendered, colors::white(), false, true);
+}
+
+void on_gui()
+{
+    if (!game::in_raid)
+        return;
+
+    render_item_esp();
+    render_player_esp();
+}
+
+void on_new_player(player &amp;in instance)
+{
+    console::print(instance.name);
+}
+
+void main()
+{
+    console::print("hello world!");
+    auto unityplayer = memory::module("UnityPlayer.dll");
+    console::print("unityplayer base: " + formatUInt(unityplayer));
+    console::print("magic: " + formatUInt(memory::read8(unityplayer)) + " " + formatUInt(memory::read8(unityplayer + 1)));
+
+    auto eft_hard_settings = memory::read64(mono::get_static_field_data("Assembly-CSharp", "EFTHardSettings"));
+    console::print(mono::get_class_name(eft_hard_settings) + " @ 0x" + formatUInt(eft_hard_settings, 'H'));
+
+    auto application_obj = unity::find_active_object("Application (Main Client)");
+    console::print("Application (Main Client) @ 0x" + formatUInt(application_obj, 'H'));
+
+    // finding input manager from game object
+    auto input_manager = memory::read64(memory::read64(memory::read64(memory::read64(memory::read64(application_obj + 0x30) + 0x18) + 0x28) + 0x30) + 0x20);
+    console::print(mono::get_class_name(input_manager) + " @ 0x" + formatUInt(input_manager, 'H'));
+
+    auto vec = vector3(100, 200, 300);
+    console::print(formatFloat(vec.x) + " " + formatFloat(vec.y) + " " + formatFloat(vec.z));
+    console::print(formatFloat(vec.length()) + " " + formatFloat(vec.distance(vec)));
+    console::print("players: " + formatInt(game::player_count()));
+
+    auto container = vector&lt;int&gt;();
+    container.push_back(1337);
+}
+</code></pre></div></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

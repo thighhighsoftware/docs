@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>th.software</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">th.software</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem active">
+                                <a href="." class="nav-link">Getting Started</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="namespaces/" class="nav-link">Namespaces</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="classes/" class="nav-link">Basic Classes & Enums</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="gclasses/" class="nav-link">Game Classes</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="examples/" class="nav-link">Example Scripts</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a rel="prev" class="nav-link disabled">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="namespaces/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#getting-started-with-scripting-in-thsoftware" class="nav-link">Getting Started with Scripting in th.software</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#introduction" class="nav-link">Introduction</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#scripting-basics" class="nav-link">Scripting Basics</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#writing-your-first-script" class="nav-link">Writing Your First Script</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#conclusion" class="nav-link">Conclusion</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<div><h1 id="getting-started-with-scripting-in-thsoftware">Getting Started with Scripting in th.software</h1>
+<h2 id="introduction">Introduction</h2>
+<p>th.software supports scripting using the AngelScript engine. With scripting, you can automate tasks, customize behaviors, and extend the functionality of the app.</p>
+<h3 id="about-angelscript">About AngelScript</h3>
+<p>AngelScript is an open-source, cross-platform scripting language designed to be easy to learn and use. It was created by Andreas Jonsson in 2003, and has since gained popularity in the gaming industry for its performance and flexibility.</p>
+<h3 id="features">Features</h3>
+<p>AngelScript supports many features that make it a powerful scripting language, including:</p>
+<ul>
+<li>Object-oriented programming (OOP): Classes, inheritance, polymorphism, etc.</li>
+<li>Garbage collection: Automatic memory management.</li>
+<li>Function overloading: Multiple functions with the same name, but different parameters.</li>
+<li>Function pointers: The ability to pass functions as arguments to other functions.</li>
+<li>Exception handling: Catching and handling errors at runtime.</li>
+<li>Operator overloading: Custom operators for user-defined types.</li>
+</ul>
+<h3 id="syntax">Syntax</h3>
+<p>AngelScript's syntax is similar to C/C++, which makes it easy for developers with experience in those languages to learn. Here are some basic examples:</p>
+<h4 id="variables">Variables</h4>
+<pre><code class="language-c++">// Declare and initialize a variable
+int x = 10;
+
+// Declare a constant
+const float PI = 3.14159;
+</code></pre>
+<h4 id="functions">Functions</h4>
+<pre><code class="language-c++">// Function declaration
+int add(int a, int b)
+{
+    return a + b;
+}
+
+// Function call
+int result = add(3, 4);
+</code></pre>
+<h4 id="classes">Classes</h4>
+<pre><code class="language-c++">// Class declaration
+class MyClass
+{
+public:
+    // Constructor
+    MyClass(int value)
+    {
+        m_value = value;
+    }
+
+    // Member function
+    void printValue()
+    {
+        console::print("Value: " + formatInt(m_value));
+    }
+
+private:
+    int m_value;
+};
+
+// Create an instance of MyClass
+auto myObj = MyClass(42);
+
+// Call a member function
+myObj.printValue();
+</code></pre>
+<h4 id="documentation">Documentation</h4>
+<p>The official AngelScript website provides extensive documentation, including a language reference, tutorials, and examples. You can find it at <a href="https://www.angelcode.com/angelscript/sdk/docs/manual/index.html">https://www.angelcode.com/angelscript/sdk/docs/manual/index.html</a>.</p>
+<h2 id="scripting-basics">Scripting Basics</h2>
+<p>Scripts can be executed in th.software's GUI, in the Config tab -&gt; Scripting subtab. Load the script by clicking the <strong><em>run</em></strong> button on the <code>.as</code> or <code>.ab</code> file. If the script is not already compiled, you can compile it by clicking the <strong><em>compile</em></strong> button.</p>
+<h3 id="script-file-extensions">Script File Extensions</h3>
+<p>The scripting engine supports two file extensions:</p>
+<ul>
+<li><code>.as</code>: This is the source code file extension. Scripts written in this format can be loaded and compiled at runtime.</li>
+<li><code>.ab</code>: This is the compiled script file extension. Scripts written in this format are already compiled and can be loaded directly. Source code cannot be read from compiled scripts as they contain byte-code.</li>
+</ul>
+<h3 id="script-locations">Script Locations</h3>
+<p>Default script directory is randomized for each software user. The default directory may be seen and/or changed in the <strong><em>Script directory</em></strong> text input.</p>
+<h3 id="script-functions">Script Functions</h3>
+<p>Each script must contain two functions:</p>
+<ul>
+<li><code>void main()</code>: This function is called when the script is first loaded. You can use this function to initialize variables, register functions, and perform other setup tasks. For example, you can print a message to the console with <code>console::print("Hello World!");</code>.</li>
+<li><code>void on_gui()</code>: This function is called repeatedly, typically every frame. You can use this function to update the app's user interface or perform other tasks that need to be performed continuously.</li>
+</ul>
+<p>There are also optional callbacks:</p>
+<ul>
+<li><code>void on_new_player(player &amp;in instance)</code>: This function is called when a new player is discovered. You can use this function to cache certain data you require anywhere else in the script.</li>
+<li><code>void on_unload()</code>: This function is called when the script is unloaded, and/or when the software exits. You can use this function to properly dispose of allocated resources (e.g. GUI items) or save configuration items.</li>
+</ul>
+<h2 id="writing-your-first-script">Writing Your First Script</h2>
+<p>To get started with scripting in th.software, follow these steps:</p>
+<ul>
+<li>Create a new file with the extension <code>.as</code> in the default script directory.</li>
+<li>Write the following code in the file:</li>
+</ul>
+<pre><code class="language-c++">void main()
+{
+    // Add initialization code here
+    console::print("Hello World!");
+}
+
+void on_gui()
+{
+    // Add GUI update code here
+}
+</code></pre>
+<ul>
+<li>Save the file.</li>
+<li>Open Config tab -&gt; Scripting subtab and click on the run icon.</li>
+</ul>
+<p>If everything is working correctly, you should see <code>Hello World!</code> printed to the console output. The <code>on_gui()</code> function will be called every frame and you can update the app's user interface from there.</p>
+<p>Congratulations! You have written and executed your first script in th.software.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>This concludes the "Getting Started" guide for scripting in th.software using AngelScript. With this knowledge, you can start writing your own scripts to automate tasks, customize behaviors, and extend the functionality of the app.</p></div></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js" defer></script>
+
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.4.3
+Build Date UTC : 2023-05-11 00:08:43.615434+00:00
+-->

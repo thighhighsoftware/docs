@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Basic Classes & Enums - th.software</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">th.software</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Getting Started</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../namespaces/" class="nav-link">Namespaces</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Basic Classes & Enums</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../gclasses/" class="nav-link">Game Classes</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../examples/" class="nav-link">Example Scripts</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a rel="prev" href="../namespaces/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../gclasses/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#class-col_t" class="nav-link">class col_t</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#class-vector3" class="nav-link">class vector3</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#class-quaternion" class="nav-link">class quaternion</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#class-bounding_box" class="nav-link">class bounding_box</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#class-collider" class="nav-link">class collider</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#enum-collider_type" class="nav-link">enum collider_type</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#enum-player_bone" class="nav-link">enum player_bone</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#enum-body_part_collider_type" class="nav-link">enum body_part_collider_type</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#enum-item_slot" class="nav-link">enum item_slot</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#class-extent" class="nav-link">class extent</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#class-picker_container_t" class="nav-link">class picker_container_t</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<div><h1 id="class-col_t"><code>class col_t</code></h1>
+<pre><code class="language-cpp">class col_t
+{
+public:
+    // Constructors
+    col_t(uint8 r, uint8 g, uint8 b, uint8 a);
+
+    // Methods
+    uint8&amp; r();
+    uint8&amp; g();
+    uint8&amp; b();
+    uint8&amp; a();
+};
+</code></pre>
+<p>A class representing a color with 4 channels (red, green, blue, and alpha).<br>
+The color channels can be accessed and modified using the <code>r()</code>, <code>g()</code>, <code>b()</code>, and <code>a()</code> member functions.<br>
+The <code>col_t</code> class can be constructed with the <code>uint8</code> values of the color channels.</p>
+<h1 id="class-vector3"><code>class vector3</code></h1>
+<pre><code class="language-cpp">class vector3
+{
+public:
+    // Constructors
+    vector3();
+    vector3(float x, float y);
+    vector3(float x, float y, float z);
+
+    // Properties
+    float x, y, z;
+
+    // Methods
+    float distance(vector3 other);
+    float length();
+    vector3 opSub(vector3);
+    vector3 opAdd(vector3);
+    vector3 opAdd(float);
+    vector3 opMul(float);
+};
+</code></pre>
+<p>A class representing a 3D vector, which has three floating-point components, <code>x</code>, <code>y</code>, and <code>z</code>.<br>
+The <code>distance()</code> method calculates the Euclidean distance between two vectors.<br>
+The <code>length()</code> method calculates the magnitude of the vector.<br>
+The <code>opSub()</code> and <code>opAdd()</code> methods overload the <code>-</code> and <code>+</code> operators, respectively, allowing vectors to be subtracted and added together.<br>
+The <code>opAdd()</code> method also has an overload that allows a vector to be added to a scalar.<br>
+The <code>opMul()</code> method overloads the <code>*</code> operator, allowing a vector to be multiplied by a scalar.</p>
+<h1 id="class-quaternion"><code>class quaternion</code></h1>
+<pre><code class="language-cpp">class quaternion
+{
+public:
+    // Constructors
+    quaternion();
+    quaternion(float x, float y, float z, float w);
+
+    // Properties
+    float x, y, z, w;
+
+    vector3 multiply(vector3 other);
+};
+</code></pre>
+<p>A class representing a 4-dimensional vector with components x, y, z, and w.<br>
+The <code>multiply()</code> method multiplies the <code>quaternion</code> by a <code>vector3</code> and returns the resulting <code>vector3</code>. This is a common operation in computer graphics for rotating a vector by a quaternion.</p>
+<h1 id="class-bounding_box"><code>class bounding_box</code></h1>
+<pre><code class="language-cpp">class bounding_box
+{
+public:
+    // Constructors
+    bounding_box();
+
+    // Properties
+    int x, y, w, h;
+    bool valid;
+};
+</code></pre>
+<p>A class representing a 2-dimensional bounding box with properties <code>x</code>, <code>y</code>, <code>w</code>, <code>h</code>, and <code>valid</code>.<br>
+The <code>x</code> and <code>y</code> properties represent the top-left corner of the bounding box, while <code>w</code> and <code>h</code> represent the width and height, respectively.<br>
+The <code>valid</code> property indicates whether the bounding box is valid or not.</p>
+<h1 id="class-collider"><code>class collider</code></h1>
+<pre><code class="language-cpp">class collider
+{
+public:
+    // Constructors
+    collider();
+
+    // Properties
+    uint8 type;
+    vector3 origin;
+    vector3 center;
+
+    vector3 size; // box
+    float height; // capsule
+    int direction; // capsule
+    float radius; // sphere and capsule
+
+    quaternion rotation;
+
+</code></pre>
+<p>A class representing a collider, which can be of different types: box, sphere or capsule.
+The collider has a <code>size</code>, which is a 3-dimensional vector for box colliders, a float <code>height</code> for capsule colliders, and a float <code>radius</code> for both sphere and capsule colliders. Capsule colliders also have a <code>direction</code>, which specifies the orientation of the capsule.</p>
+<h1 id="enum-collider_type"><code>enum collider_type</code></h1>
+<pre><code class="language-cpp">enum collider_type
+{
+    box,
+    sphere,
+    capsule
+}
+</code></pre>
+<h1 id="enum-player_bone"><code>enum player_bone</code></h1>
+<pre><code class="language-cpp">enum player_bone
+{
+    head,
+    neck,
+    pelvis,
+    calf_l,
+    foot_l,
+    calf_r,
+    foot_r,
+    upperarm_l,
+    forearm_l,
+    upperarm_r,
+    forearm_r,
+    spine,
+    bone_amt
+};
+</code></pre>
+<h1 id="enum-body_part_collider_type"><code>enum body_part_collider_type</code></h1>
+<pre><code class="language-cpp">enum body_part_collider_type
+{
+    None = -1,
+    Head = 0,
+    Ribcage = 1,
+    Stomach = 2,
+    Pelvis = 3,
+    LeftUpperArm = 4,
+    LeftForearm = 5,
+    RightUpperArm = 6,
+    RightForearm = 7,
+    LeftThigh = 8,
+    LeftCalf = 9,
+    RightThigh = 10,
+    RightCalf = 11,
+    collider_amt = 12
+};
+</code></pre>
+<h1 id="enum-item_slot">enum item_slot</h1>
+<pre><code class="language-cpp">enum item_slot
+{
+    headwear = 0,
+    rig = 1,
+    armor = 2,
+    first_weapon = 3,
+    second_weapon = 4,
+    armband = 5,
+    container = 6
+}
+</code></pre>
+<h1 id="class-extent"><code>class extent</code></h1>
+<pre><code class="language-cpp">class extent
+{
+public:
+    int width;
+    int height;
+}
+</code></pre>
+<h1 id="class-picker_container_t"><code>class picker_container_t</code></h1>
+<pre><code class="language-cpp">class picker_container_t
+{
+public:
+    picker_container_t();
+    picker_container_t(uint8 r, uint8 g, uint8 b);
+
+    col_t color;
+}
+</code></pre></div></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

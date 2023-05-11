@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Game Classes - th.software</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">th.software</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Getting Started</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../namespaces/" class="nav-link">Namespaces</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../classes/" class="nav-link">Basic Classes & Enums</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Game Classes</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../examples/" class="nav-link">Example Scripts</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a rel="prev" href="../classes/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../examples/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#class-player" class="nav-link">class player</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#class-market_item" class="nav-link">class market_item</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#class-item" class="nav-link">class item</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#class-exfil_point" class="nav-link">class exfil_point</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<div><h1 id="class-player"><code>class player</code></h1>
+<pre><code class="language-cpp">class player
+{
+public:
+    uint64 ptr;
+    vector3 origin;
+    vector3 rotation;
+    bool local;
+    bool bot;
+    bool scav;
+    int health;
+    int health_max;
+    string name;
+    int level;
+
+    bounding_box bbox;
+
+    vector3 bone[player_bone::bone_amt];
+    collider body_collider;
+    collider&amp; collider[body_part_collider_type::collider_amt];
+    string slot_item_id[7];
+};
+</code></pre>
+<p>A class representing a player.  </p>
+<p>The <code>ptr</code> member is a <code>pointer</code> to the <code>EFT.Player</code> class instance.  </p>
+<p>The <code>origin</code> member represents the player's current position in the game world.  </p>
+<p>The <code>local</code> member is a <code>boolean</code> flag indicating whether the player is the local player (i.e. controlled by the current user).<br>
+The <code>bot</code> and <code>scav</code> members are <code>boolean</code> flags indicating whether the player is an AI-controlled bot or a scav, respectively.  </p>
+<p>The <code>health</code> member represents the current health of the player, while <code>health_max</code> represents the maximum health that the player can have.<br>
+The <code>name</code> member is a string representing the player's name.  </p>
+<p>The <code>bbox</code> member is an instance of the <code>bounding_box</code> class, which represents the bounding box of the player's model.<br>
+The <code>bone</code> member is an array of <code>vector3</code> objects representing the positions of the bones in the player's model.<br>
+The <code>body_collider</code> member is an instance of the <code>collider</code> class representing the collision detection shape of the player's body.<br>
+The <code>collider</code> member is an array of references to <code>collider</code> objects representing the collision detection shapes for each of the player's body parts.</p>
+<h1 id="class-market_item"><code>class market_item</code></h1>
+<pre><code class="language-cpp">class market_item
+{
+public:
+    int avg_price;
+    uint32 attributes;
+
+    string get_name(int locale);
+};
+</code></pre>
+<p>A class representing in-game market info for an item.  </p>
+<p>The <code>avg_price</code> member represents the average price for the item.
+The <code>get_name()</code> method returns the item's name in the specified <code>locale</code>. Available locales are <code>0</code> - <code>english</code>, <code>1</code> - <code>russian</code>.  </p>
+<p>The <code>attributes</code> member is a bitfield containing attributes. Possible attributes are:</p>
+<pre><code class="language-cpp">enum market_item_attributes
+{
+    market_item_food = 1 &lt;&lt; 0,
+    market_item_meds = 1 &lt;&lt; 1,
+    market_item_weapon = 1 &lt;&lt; 2,
+    market_item_armored = 1 &lt;&lt; 3,
+    market_item_barter = 1 &lt;&lt; 4,
+    market_item_ammo = 1 &lt;&lt; 5,
+    market_item_backpack = 1 &lt;&lt; 6,
+    market_item_grenade = 1 &lt;&lt; 7,
+    market_item_helmet = 1 &lt;&lt; 8,
+    market_item_keys = 1 &lt;&lt; 9,
+    market_item_mods = 1 &lt;&lt; 10,
+    market_item_noflea = 1 &lt;&lt; 11,
+    market_item_rig = 1 &lt;&lt; 12,
+};
+</code></pre>
+<p>Please note that this enum is <strong>not</strong> defined in scripting.</p>
+<h1 id="class-item"><code>class item</code></h1>
+<pre><code class="language-cpp">class item
+{
+public:
+    uint64 ptr;
+    vector3 origin;
+    bool container;
+    bool corpse;
+    int stack_count;
+    bool found_in_raid;
+
+    int64 container_item_count;
+    string container_item_id[];
+
+    market_item&amp; market_info;
+};
+</code></pre>
+<p>A class representing a loot item, container or corpse.  </p>
+<p>The <code>ptr</code> member is a <code>pointer</code> to the appropriate class instance.  </p>
+<p>The <code>origin</code> member represents the item's current position in the game world.  </p>
+<p>The <code>container</code> and <code>corpse</code> members are <code>boolean</code> flags indicating whether the item is a container or a corpse, respectively.  </p>
+<p>The <code>market_info</code> member holds market information for the item.  </p>
+<h1 id="class-exfil_point"><code>class exfil_point</code></h1>
+<pre><code class="language-cpp">class item
+{
+public:
+    uint64 ptr;
+    vector3 origin;
+    bool scav_point;
+    string name;
+};
+</code></pre>
+<p>A class representing an exfiltration point.  </p>
+<p>The <code>ptr</code> member is a <code>pointer</code> to the appropriate class instance.  </p>
+<p>The <code>origin</code> member represents the exfiltration point's current position in the game world.  </p>
+<p>The <code>scav_point</code> members is a <code>boolean</code> flag indicating whether the exfiltration point is a scav point.  </p>
+<p>The <code>name</code> member holds the exfiltration point's name.  </p></div></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
