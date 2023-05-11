@@ -615,6 +615,16 @@ void config::set_bool(string name, bool value)
 <li>Please refer to the example scripts for a better understanding of how to handle GUI bindings.  </li>
 <li>All <code>add_*</code> functions, with the exception of <code>add_subtab</code>, return a handle to the control. You <strong><em>MUST</em></strong> properly dispose of the created controls by calling <code>destroy_control</code> on <strong><em>ALL</em></strong> of the handles; this can be handled in the <code>on_unload</code> callback.  </li>
 <li>Control creation functions expect a global variable declaration as the last argument. Variable must already be declared in code; it will not be created by the binding.</li>
+<li>Default tab names are:<ul>
+<li>players</li>
+<li>loot</li>
+<li>visuals</li>
+<li>misc</li>
+<li>aim</li>
+<li>customize</li>
+<li>config</li>
+</ul>
+</li>
 </ul>
 <h2 id="func-add_checkbox"><code>func add_checkbox</code></h2>
 <pre><code class="language-cpp">uint64 gui::add_checkbox(string tab, string subtab, string text, string bool_decl)
