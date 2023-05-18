@@ -198,13 +198,15 @@ public:
     uint64 ptr;
     vector3 origin;
     bool scav_point;
+    collider point_collider;
     string name;
 };
 </code></pre>
 <p>A class representing an exfiltration point.  </p>
 <p>The <code>ptr</code> member is a <code>pointer</code> to the appropriate class instance.  </p>
 <p>The <code>origin</code> member represents the exfiltration point's current position in the game world.  </p>
-<p>The <code>scav_point</code> members is a <code>boolean</code> flag indicating whether the exfiltration point is a scav point.  </p>
+<p>The <code>scav_point</code> member is a <code>boolean</code> flag indicating whether the exfiltration point is a scav point.  </p>
+<p>The <code>point_collider</code> member holds the exfiltration point's collider.  </p>
 <p>The <code>name</code> member holds the exfiltration point's name.  </p></div></div>
             </div>
         </div>
